@@ -3,8 +3,8 @@
 
 
 <mapper namespace="user">
-
-  	<select id="selectByIdPw" parameterType="com.javaex.vo.UserVo" resultType="com.javaex.vo.UserVo">
+	<!-- 로그인 -->
+	<select id="selectByIdPw" parameterType="com.javaex.vo.UserVo" resultType="com.javaex.vo.UserVo">
 		<![CDATA[
 			select  no,
 					name
@@ -12,6 +12,30 @@
 			where id= #{id}
 			and password= #{password}
 		]]>
-	</select>  
+	</select>
+
+	<!-- 회원정보수정폼 -->
+	<select id="selectOneByNo" parameterType="int" resultType="com.javaex.vo.UserVo">
+		<![CDATA[ 
+			select 	no, 
+					id,
+					name,
+					password,
+					gender
+			from users
+			where no = #{no}
+		]]>
+	</select>
+	
+	<!-- 회원정보수정 -->
+	<update id="update" parameterType="com.javaex.vo.UserVo">
+		<![CDATA[ 
+			update users
+			set name = #{name},
+				password = #{password},
+				gender = #{gender}
+			where no = #{no}
+		]]>
+	</update>
 
 </mapper>

@@ -76,7 +76,7 @@ public class JwtUtil {
 	}
 
 	// 토큰이 유효한지 검사
-	private static boolean checkToken(String token) {
+	public static boolean checkToken(String token) {
 
 		try {
 			JWTVerifier verifier = JWT.require(Algorithm.HMAC512(SECRET_KEY)).build();
@@ -91,7 +91,7 @@ public class JwtUtil {
 	}
 
 	// 토큰에서 주체 꺼내기
-	private static String getSubjectFromToken(String token) {
+	public static String getSubjectFromToken(String token) {
 
 		DecodedJWT decodedJWT = JWT.decode(token);
 		return decodedJWT.getSubject();
